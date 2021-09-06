@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ScooterApp.Controls.BusyIndicator">
+    <Grid>
+        <Grid
+            Opacity="0.5"
+            BackgroundColor="{DynamicResource PrimaryColor}"/>
+        <StackLayout
+            Orientation="Vertical"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+            <ActivityIndicator
+                IsRunning="True"/>
+            <Label
+                Padding="0,22,0,0"
+                FontSize="16"
+                Text="Busy..."
+                />
+        </StackLayout>
+    </Grid>
+</ContentView>

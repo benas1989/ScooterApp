@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Shell
+    Style="{DynamicResource ShellStyle}"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:ScooterApp.Views"
+    xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="ScooterApp.Views.ShellPage">
+    <Shell.FlyoutHeader>
+        <Grid
+            HeightRequest="150">
+            <ffimage:CachedImage
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                WidthRequest="150"
+                HeightRequest="150"
+                Aspect="AspectFit"
+                Source="logo.png"/>
+        </Grid>
+    </Shell.FlyoutHeader>
+    <Shell.FlyoutBackground>
+        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+            <GradientStop Color="{DynamicResource ShellFlyoutStartColor}"
+                          Offset="0.1"/>
+            <GradientStop Color="{DynamicResource ShellFlyoutEndColor}"
+                          Offset="1.0"/>
+        </LinearGradientBrush>
+    </Shell.FlyoutBackground>
+    <FlyoutItem Title="Connect" Icon="connect.png">
+        <ShellContent>
+            <views:ConnectPage Title="Connect"/>
+        </ShellContent>
+    </FlyoutItem>
+    <FlyoutItem Title="Basic info" Route="basicInfo" Icon="basicInfo.png">
+        <ShellContent>
+            <views:BasicInfoPage Title="Basic info"/>
+        </ShellContent>
+    </FlyoutItem>
+    <FlyoutItem Title="Internal battery" Route="internalBattery" Icon="battery.png">
+        <ShellContent>
+            <views:InternalBatteryPage Title="Internal battery"/>
+        </ShellContent>
+    </FlyoutItem>
+    <FlyoutItem Title="External battery" Route="externalBattery" Icon="battery.png">
+        <ShellContent>
+            <views:ExternalBatteryPage Title="External battery"/>
+        </ShellContent>
+    </FlyoutItem>
+    <FlyoutItem Title="Settings" Route="settings" Icon="settings.png">
+        <ShellContent>
+            <views:SettingsPage Title="Settings"/>
+        </ShellContent>
+    </FlyoutItem>
+</Shell>

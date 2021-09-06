@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    BackgroundColor="{DynamicResource PrimaryBackgroundColor}"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:templates="clr-namespace:ScooterApp.Views.Templates"
+    x:Class="ScooterApp.Views.InternalBatteryPage">
+    <Grid>
+        <StackLayout
+            Orientation="Vertical">
+            <Label Text="Internal batterry"/>
+        </StackLayout>
+       <templates:BusyIndicator/>
+    </Grid>
+</ContentPage>

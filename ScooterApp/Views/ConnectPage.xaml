@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    x:Name="page"
+    BackgroundColor="{DynamicResource PrimaryBackgroundColor}"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:ScooterApp.Converters"
+    xmlns:styles="clr-namespace:ScooterApp.Styles"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:templates="clr-namespace:ScooterApp.Views.Templates"
+    x:Class="ScooterApp.Views.ConnectPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="IconLabelStyle" TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="Padding" Value="12"/>
+                <Setter Property="FontFamily" Value="IconsFont"/>
+                <Setter Property="FontSize" Value="28"/>
+            </Style>
+
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="FontFamily" Value="IconsFont"/>
+                <Setter Property="FontSize" Value="{DynamicResource PrimaryTextSize}"/>
+            </Style>
+            <converters:BoolToTextConverter x:Key="BoolToTextConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid
+       RowDefinitions="Auto, *, Auto">
+       <!--ICON BLE state-->
+       <Grid
+           ColumnDefinitions="Auto,Auto,*,Auto">
+           <Label
+               Style="{DynamicResource IconLabelStyle}"
+               Grid.Column="0"
+               Text="{Binding BLEStatus}"/>
+           <Label
+               Grid.Column="1"
+               VerticalOptions="Center"
+               Text="{Binding StatusMessage}"/>
+           <ActivityIndicator
+               Margin="12"
+               Color="Red"
+               IsRunning="{Binding IsScanning}"
+               Grid.Column="3"/>
+       </Grid>
+       <!--Scooters list-->
+       <CollectionView
+           Grid.Row="1"
+           ItemsSource="{Binding Devices}">
+           <CollectionView.ItemsLayout>
+               <GridItemsLayout
+                   Orientation="Vertical"
+                   Span="1"/>
+           </CollectionView.ItemsLayout>
+           <CollectionView.ItemTemplate>
+               <DataTemplate>
+                   <Grid
+                       Padding="8">
+                       <Frame
+                           xct:TouchEffect.AnimationDuration="100"
+                           xct:TouchEffect.AnimationEasing="CubicInOut"
+                           xct:TouchEffect.PressedScale="1.1"
+                           xct:TouchEffect.Command="{Binding VM.SelectScooterCommand, Source={x:Reference page}}"
+                           xct:TouchEffect.CommandParameter="{Binding .}"
+                           BackgroundColor="Transparent"
+                           HasShadow="False"
+                           BorderColor="Gray">
+                           <Grid
+                               ColumnDefinitions="Auto, *,Auto, Auto">
+                               <Label
+                                   Style="{DynamicResource IconLabelStyle}"
+                                   Text="{x:Static styles:Icons.BLUETOOTH_ON}"
+                                   />
+                               <Label
+                                   Style="{DynamicResource LabelStyle}"
+                                   Grid.Column="1"
+                                   Text="{Binding Name}"/>
+                               <Label
+                                   Padding="0,0,18,0"
+                                   Grid.Column="2"
+                                   Style="{DynamicResource LabelStyle}"
+                                   Text="{Binding IsEncrypted, StringFormat='(Encrypted: {0})'}"/>
+                               <Label
+                                   Style="{DynamicResource LabelStyle}"
+                                   Grid.Column="3"
+                                   Text="{Binding Rssi}"
+                                   />
+                           </Grid>
+                       </Frame>
+                   </Grid>
+               </DataTemplate>
+           </CollectionView.ItemTemplate>
+
+       </CollectionView>
+
+       <!--Bottom button-->
+       <Button
+           IsVisible="{Binding CanScan}"
+           Margin="8"
+           TextColor="{DynamicResource PrimaryTextColor}"
+           BackgroundColor="{DynamicResource PrimaryColor}"
+           Grid.Row="2"
+           Text="{Binding ButtonText}"
+           Command="{Binding ScanBLECommand}"/>
+        <Button
+            IsVisible="{Binding CanDisconnect}"
+           Margin="8"
+           TextColor="{DynamicResource PrimaryTextColor}"
+           BackgroundColor="{DynamicResource PrimaryColor}"
+           Grid.Row="2"
+           Text="Disconnect"
+           Command="{Binding DisconnectBLECommand}"/>
+        <templates:BusyIndicator
+            Grid.RowSpan="3"/>
+   </Grid>
+</ContentPage>

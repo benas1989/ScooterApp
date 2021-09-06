@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ScooterApp.Styles.Styles">
+
+   <Style x:Key="ShellStyle" TargetType="Element">
+        <Setter Property="Shell.BackgroundColor" Value="{DynamicResource PrimaryColor}" />
+        <Setter Property="Shell.ForegroundColor" Value="{DynamicResource ShellTextColor}" />
+        <Setter Property="Shell.TitleColor" Value="{DynamicResource ShellTextColor}" />
+        <!--<Setter Property="Shell.DisabledColor" Value="{DynamicResource DisabledColor}" />
+        <Setter Property="Shell.UnselectedColor" Value="{DynamicResource UnselectedColor}" />
+        <Setter Property="Shell.TabBarBackgroundColor" Value="{DynamicResource BackgroundColor}" />
+        <Setter Property="Shell.TabBarForegroundColor" Value="{DynamicResource PrimaryColor}"/>
+        <Setter Property="Shell.TabBarUnselectedColor" Value="{DynamicResource UnselectedColor}"/>
+        <Setter Property="Shell.TabBarTitleColor" Value="{DynamicResource PrimaryColor}"/>-->
+    </Style>
+
+    <Style TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}"/>
+        <Setter Property="FontSize" Value="{DynamicResource PrimaryTextSize}"/>
+    </Style>
+
+    <Style TargetType="Entry">
+        <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryEntryBackground}"/>
+        <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}"/>
+        <Setter Property="PlaceholderColor" Value="{DynamicResource SecondaryTextColor}"/>
+        <Setter Property="FontSize" Value="{DynamicResource PrimaryTextSize}"/>
+    </Style>
+
+
+</ResourceDictionary>

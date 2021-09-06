@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    BackgroundColor="{DynamicResource PrimaryBackgroundColor}"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:templates="clr-namespace:ScooterApp.Views.Templates"
+    x:Class="ScooterApp.Views.BasicInfoPage">
+    <Grid>
+        <StackLayout
+            Padding="8"
+            Orientation="Vertical">
+            <Label
+                Text="{Binding Scooter.Name, StringFormat='Name: {0}'}"/>
+            <Label
+                Text="{Binding Scooter.CurrentOperatingMode, StringFormat='Mode: {0}'}"/>
+            <Label
+                Text="{Binding Scooter.ESCSerialNumber, StringFormat='ESC serial number: {0}'}"/>
+            <Label
+                Text="{Binding Scooter.ESCVersion, StringFormat='ESC version: {0}'}"/>
+
+            <Label
+                Text="{Binding Scooter.BLEFirmwareVersion, StringFormat='BLE version: {0}'}"/>
+            <Label
+                Text="{Binding Scooter.BMSPercentage, StringFormat='BMS: {0}%'}"/>
+            <Label
+                Text="{Binding Scooter.CurrentMileage, StringFormat='Current mileage: {0}m.'}"/>
+            <Label
+                Text="{Binding Scooter.TotalMileage, StringFormat='Total mileage: {0}'}"/>
+            <Label
+                Text="{Binding Scooter.PredictedRemainingMileage, StringFormat='Remaining mileage: {0}'}"/>
+            <Label
+                Text="{Binding Scooter.ScooterTemperature, StringFormat='Temperature: {0}°C'}"/>
+            <Label
+                Text="{Binding Scooter.Power, StringFormat='Power: {0}W'}"/>
+            <Label
+                Text="{Binding Scooter.ErrorMessage, StringFormat='Error: {0}'}"/>
+            <Line
+                Margin="0,8"
+                BackgroundColor="Black"
+                HeightRequest="1"/>
+
+
+            <!--Internal BMS-->
+            <Label
+                Text="{Binding Scooter.InternalBMSSerialNumber, StringFormat='BMS1 serial: {0}'}"/>
+            <Label
+                Text="{Binding Scooter.InternalBMSFirmwareVersionFromESC, StringFormat='BMS1 version: {0}'}"/>
+             <Label
+                Text="{Binding Scooter.InternalBMSRemainingCapacityPercent, StringFormat='BMS1: {0}%'}"/>
+
+            <!--External BMS-->
+            <Line
+                Margin="0,8"
+                BackgroundColor="Black"
+                HeightRequest="1"/>
+
+            <Label
+                Text="{Binding Scooter.ExternalBMSSerialNumber, StringFormat='BMS2 serial: {0}'}"/>
+            <Label
+                Text="{Binding Scooter.ExternalBMSFirmwareVersionFromESC, StringFormat='BMS2 version: {0}'}"/>
+            <Label
+                Text="{Binding Scooter.ExternalBMSRemainingCapacityPercent, StringFormat='BMS2: {0}%'}"/>
+            <Line
+                Margin="0,8"
+                BackgroundColor="Black"
+                HeightRequest="1"/>
+            <Button
+                BackgroundColor="Blue"
+                Text="Refresh"
+                Command="{Binding LoadDataCommand}"/>
+        </StackLayout>
+        <templates:BusyIndicator/>
+    </Grid>
+</ContentPage>
